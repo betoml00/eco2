@@ -1,0 +1,614 @@
+\documentclass[10pt, landscape]{article}
+\usepackage[spanish, es-noshorthands]{babel}
+\decimalpoint
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage[margin=1cm, top=1cm, landscape]{geometry}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{centernot}
+
+% Para gráficas
+\usepackage{tikz}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns,arrows.meta}
+\usetikzlibrary{shadows}
+\usetikzlibrary{external}
+\usetikzlibrary{decorations.pathreplacing,calligraphy}
+
+%pgfplots
+\usepackage{pgfplots}
+\pgfplotsset{width=6.5cm, compat=newest}
+\usepgfplotslibrary{statistics}
+\usepgfplotslibrary{fillbetween}
+
+%colours
+\usepackage{xcolor}
+
+\definecolor{miAzul}{RGB}{13, 33, 161}
+\definecolor{miMorado}{RGB}{88, 43, 67}
+\definecolor{miRojo}{RGB}{186, 24, 27}
+
+\titleformat{\section}
+{\normalfont\large\bfseries}{}{0mm}{}
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}{}{0mm}{}
+\titleformat{\subsubsection}
+{\normalfont\small\bfseries}{}{0mm}{}  
+\titlespacing{\section}{0pt}{*0.5}{*0.0}
+\titlespacing{\subsection}{0pt}{*0.5}{*0.0}
+\titlespacing{\subsubsection}{0pt}{*0.5}{*0.0}
+
+% Quitar el número de página
+\pagenumbering{gobble}
+
+\setlist[itemize]{leftmargin=*, nosep}
+
+\title{}
+
+% Formato del párrafo
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.4em}
+
+\begin{document}
+
+\pgfplotsset{
+    standard/.style={
+    axis line style = thin,
+    trig format=rad,
+    enlargelimits,
+    axis x line=middle,
+    axis y line=middle,
+    every axis x label/.style={at={(current axis.right of origin)}, xshift=1.5ex, anchor=north west},
+    every axis y label/.style={at={(current axis.above origin)}, yshift=1.5ex, anchor=south east},
+    clip=false
+    }
+}
+
+\footnotesize
+
+\begin{center}
+     \Large{\textbf{Economía II}} \\
+\end{center}
+\begin{multicols*}{3}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\setlength{\abovedisplayskip}{0.25em}
+\setlength{\belowdisplayskip}{0.25em}
+\setlength{\abovedisplayshortskip}{0.25em}
+\setlength{\belowdisplayshortskip}{0.25em}
+
+\section{Variables macroeconómicas}
+\subsection{El PIB}
+El PIB es el valor de los bienes y servicios finales producidos en la economía durante un cierto periodo. Solamente queremos contabilizar la producción de \textit{bienes finales}, no la de bienes intermedios. Tenemos tres formas de calcular el PIB:
+
+\textbf{1. El PIB es la suma del valor agregado en la economía durante un determinado periodo.} El valor que añade una empresa es el valor de su producción menos el valor de los bienes intermedios que utiliza para ello. Esta forma de calcular el PIB es a través de la \textit{oferta agregada} (\textit{OA}).
+\[ \textit{VA} = \textit{PB} - \textit{CI}, \]
+donde:
+\begin{itemize}
+    \item \textit{VA} es el valor agregado,
+    \item \textit{PB} es la producción bruta y
+    \item \textit{CI} es el consumo intermedio.
+\end{itemize}
+
+\textbf{2. El PIB es la suma de las rentas de la economía durante un determinado periodo.} Esto quiere decir que el PIB es la \textit{renta del trabajo} (lo que se le paga a los trabajadores) más la \textit{renta de capital} o \textit{beneficios} (lo que se queda la empresa). Esta forma de calcularlo se conoce como \textit{PIB a costo de factores} y también es por \textit{OA}.
+\[ \textit{PIB}_{\text{cf}} = \textit{RA} + \textit{EE} + D,\]
+donde:
+\begin{itemize}
+    \item \textit{RA} es la remuneración a asalariados,
+    \item \textit{EE} es el excedente de explotacción y
+    \item $D$ es la depreciación.
+\end{itemize}
+
+\textbf{3. Por gasto o precios de merado} de los diferentes sectores de la economía. Estos sectores incluyen familias, empresas, gobiernos y el resto del mundo. Esta forma de calcular el PIB es a través de la \textit{demanda agregada} (\textit{DA}).
+\[ \textit{PIB}_{\textit{pm}} = C + I + G + \textit{XN}, \]
+donde:
+\begin{itemize}
+    \item $C$, el consumo, es el gasto de las familias;
+    \item $I$, la inversión, es el gasto de las empresas;
+    \item $G$ es el gasto del gobierno, y
+    \item \textit{XN} representa las exportaciones netas (exportaciones menos importaciones).
+\end{itemize}
+
+\subsubsection{Identidades importantes}
+Para comparar la oferta agregada con la demanda agregada, nos basamos en:
+\begin{align*}
+    \textit{OA} &= \textit{DA} \\
+    \textit{PIB}_{\text{cf}} &= \textit{PIB}_{\textit{pm}} - \textit{II} + \,\textrm{subsidios}.
+\end{align*}
+
+El ingreso disponible ($Y_D$) es:
+\begin{align*}
+    Y_D &= Y - T + T_g \\
+        &= Y - (\textit{ID} + \textit{II} - \,\textrm{sub} + T_g) \\
+        &= C + S.
+\end{align*}
+donde:
+\begin{itemize}
+    \item $Y$ es el PIB,
+    \item $T$ es la recaudación de impuestos,
+    \item $T_g$ es la transferencia gubernamental,
+    \item $C$ es el consumo y
+    \item $S$ son los ahorros.
+\end{itemize}
+
+También tenemos que la inversión $I$ se calcula
+\[ I = S + S_g + AE, \]
+donde $Sg$ son los ahorros del gobierno y $AE$ es el ahorro externo. Nótese que $AE = - XN$. 
+
+Podemos calcular a $S_g$ como
+\[ S_g = T - (G + T_g). \]
+
+\subsection{PIB nominal y real}
+El \textbf{PIB nominal} es la suma de las cantidades de bienes finales producidos multiplicada por su precio \textit{corriente} (el precio ``actual''). El PIB nominal también se denomina \textbf{PIB a precios corrientes}. Las variables medidas a precios corrientes se representarán con un signo de \$ detrás de ellas; por ejemplo, $Y_t\$$ representa el PIB nominal del año $t$.
+
+El \textbf{PIB real} es la suma de la producción de bienes finales multiplicada por los precios \textit{constantes} (precios fijados en otro año). También se denomina \textbf{PIB expresado en bienes}, \textbf{PIB a precios constantes} o \textbf{PIB ajustado por la inflación}. Si se dice simplemente PIB, usualmente se refiere al PIB real. $Y_t$ representa el PIB real del año $t$.
+
+El crecimiento del PIB en el año $t$ se calcula como
+\[ \frac{Y_t - Y_{t-1}}{Y_{t-1}}. \]
+
+\subsection{La tasa de desempleo}
+El \textbf{empleo} ($N$) es el número de personas que tienen trabajo; el \textbf{desempleo} ($U$) es el número de personas que no tienen empleo, pero están buscando uno. La \textbf{población activa} ($L$) es la suma del empleo y el desempleo:
+\[L = N + U.\]
+
+La \textbf{tasa de desempleo} ($u$) es
+\[ u = \frac{U}{L} = \frac{U}{N + U}. \]
+
+Podemos visualizar a la división de la población en el siguiente diagrama:
+
+\begin{tikzpicture}
+    [
+        level 1/.style = {sibling distance = 2.75cm, level distance = 0.8cm},
+        level 2/.style = {sibling distance = 4cm},
+        level 3/.style = {sibling distance = 2cm}
+    ]
+    \node {Población total}
+        child {
+            node {Pob. $<$ 15 años}
+        }
+        child {
+            node {Pob. $\geq$ 15 años}
+            child{
+                node {Pob. no eco. activa}
+                child{
+                    node{Disponible}
+                }
+                child{
+                    node{No disponible}
+                }
+            }               
+            child {
+                node {Pob. eco. activa ($L$)}                
+                child{
+                    node{Ocupado ($N$)}
+                }
+                child{
+                    node{Desocupado ($U$)}
+                }
+            }
+        };
+\end{tikzpicture}
+
+\subsection{La tasa de inflación}
+La \textbf{tasa de inflación} es la tasa a la que sube el nivel de precios. Para definir al nivel de precios, existen dos \textit{índices de precios}: el deflactor del PIB y el Índice de Precios de Consumo.
+
+\subsubsection{El deflactor del PIB}
+Si vemos que el PIB nominal aumenta más deprisa que el PIB real, la diferencia tiene que deberse a una subida de precios. Así pues, el \textbf{deflactor del PIB} en el año $t$ se denota por $P_t$ y está definido como
+\[ P_t = \frac{Y_t \$}{Y_t}. \]
+
+Por definición, en el año base, $Y_t = Y_t \$$. Por lo tanto, en este año, el deflactor del PIB es igual a 1. Recordemos que el deflactor es un número índice; pero su tasa de variación, $\pi_t = \frac{P_t - P_{t-1}}{P_{t-1}}$, indica la tasa a la que sube el nivel general de precios con el paso del tiempo, es decir, la tasa de inflación.
+
+\subsubsection{El índice de precios de consumo}
+Mientras que el deflactor del PIB indica el precio medio de la producción, es decir, de los bienes finales \textit{producidos} en la economía, a los consumidores les interesa el precio medio del \textit{consumo}. El \textbf{Índice de Precios de Consumo (IPC)} nos viene a solucionar ese problema.
+
+Si bien el IPC y el deflactor del PIB varían al unísono la mayor parte del tiempo, esto no siempre es así. Cuando el precio de los bienes importados sube en relación con el de los bienes producidos, el IPC aumenta más deprisa que el deflactor del PIB.
+
+\subsubsection{Maneras para calcular un índice de precios}
+\textbf{Índice de Laspeyres} ($P_t^L$): precios ponderados por las cantidades del año base ($t=0$)
+\[ P_t^L = \frac{ \sum_{i=1}^n p_{it} q_{i0} }{\sum_{i=1}^n p_{i0} q_{i0}}. \]
+
+\textbf{Índice de Paasche} ($P_t^P$): precios ponderados por las cantidades del año corriente:
+\[ P_t^P = \frac{ \sum_{i=1}^n p_{it} q_{it} }{\sum_{i=1}^n p_{i0} q_{it}}. \]
+
+
+\section{El mercado de bienes y servicios}
+
+\subsection{La demanda de bienes}
+Nos vamos a centar en la interrelación de la producción, la renta y la demanda: las variaciones de la demanda de bienes alteran la producción; las varaciones de la producción alteran la renta, y las variaciones de la renta alteran la demanda de bienes.
+
+Representamos la demanda total de bienes por medio de $Z$. Utilizando el cálculo del PIB por el lado de la demanda, entonces podemos definir la siguiente identidad:
+\[ Z  = C + I + G + X - IM.\]
+
+Para analizar a los diferentes componentes de $Z$, haremos algunos supuestos:
+\begin{itemize}
+    \item Las empresas están dispuestas a ofrecer cualquier cantidad del bien a un determinado precio, $p$. Esto nos permite centrarnos en el papel de la demanda en la determinación de la producción. El supuesto sólo es válido en el corto plazo.
+    \item Estamos en una economía cerrada al comercio internacional. Esto es, $X=IM=0$.
+    \item La inversión, $I$, es exógena (por lo pronto). La representaremos, pues, como $\bar{I}$.
+    \item Tanto el gasto público, $G$, como los impuestos, $T$ ---que juntos describen la \textbf{política fiscal}---, son variables exógenas.
+\end{itemize}
+
+\subsubsection{El consumo}
+Definimos $0<c_1<1$ como la \textbf{propensión marginal a consumir} ---lo que nos indica cuánto afecta un poco más de renta disponible al consumo--- y $c_0$ como el consumo autónomo ---que es lo que consumirían los individuos si su renta disponible fuera igual a cero---. Entonces la relación entre el consumo y la renta disponible es:
+\begin{align*}
+    C &= c_0 + c_1Y_D    \\
+      &= c_0 + c_1(Y-T+T_g).
+\end{align*}
+
+\subsubsection{El gasto público}
+Si el gasto aumenta y/o los impuestos disminuyen, estamos ante un deterioro de las finanzas públicas o a una \textbf{política fiscal expansiva}. Por otro lado, si el gasto disminuye y/o aumentan los impuestos, estamos ante una mejora de las finanzas públicas o una \textbf{política fiscal contractiva}. Definimos al ahorro del gobierno ($S_g$) como 
+\[ S_g = T - T_g - G. \]
+
+\subsubsection{El ahorro}
+El \textbf{ahorro} es la suma del ahorro privado y del ahorro público.
+
+El \textbf{ahorro privado} ($S$) es igual a la renta disponible menos el consumo:
+\begin{align*}
+    S &= Y_D - C \\
+      &= Y - T + T_g - C
+\end{align*}
+
+El \textbf{ahorro público} $(T-T_g-G)$ es igual a los impuestos menos el gasto público.
+
+Partiendo de que $Y=C+I+G$, si le restamos los impuestos a ambos lados,
+\begin{align*}
+    Y-T+T_g &= C-T + T_g + I + G \\
+    Y-T+T_g - C &= -T + T_g + I + G \\
+    S &= -T + T_g + I + G \\
+    I &= S + (T-T_g - G) \\
+    I &= S + S_g.
+\end{align*}
+
+Así pues, la inversión es igual a la suma del ahorro privado y del ahorro público; es decir, la inversión es igual al ahorro. Esto nos va a permitir calcular la producción de equilibrio de dos maneras:
+\begin{itemize}
+    \item Igualando la producción y la demanda
+    \item Igualando la inversión y el ahorro
+\end{itemize}
+
+\subsection{La determinación de la producción de equilibrio}
+
+\subsubsection{Producción = demanda}
+
+Si sustituimos $C$, $I$ y $G$ en $Z$, tenemos que
+\[ Z = c_0 + c_1(Y-T+T_g) + \bar{I} + G.  \]
+
+En el \textbf{equilibrio} del mercado de bienes, la producción, $Y$, es igual a la demanda de bienes, $Z$. Esta ecuación, $Y=Z$, se conoce como la \textbf{condición de equilibrio}. Si sustituimos $Z$, entonces
+\begin{align*}
+    Y &= c_0 + c_1(Y-T+T_g) + \bar{I} + G \\
+    Y &= c_0 + c_1Y - c_1(T-T_g) + \bar{I} + G \\
+    (1-c_1)Y &= c_0 - c_1(T-T_g) + \bar{I} + G \\
+    Y &= \frac{1}{1-c_1} \left[ c_0 - c_1(T-T_g) + \bar{I} + G \right].
+\end{align*}
+El primer término, $\frac{1}{1-c_1}$, se denomina \textbf{multiplicador keynesiano}. El segundo término, $\left[ c_0 - c_1(T-T_g) + \bar{I} + G \right]$, es el \textbf{gasto autónomo} (la parte de la demanda de bienes que no depende de la producción). Poniendo en palabras nuestros resultados, la producción depende de la demanda, la cual depende de la renta, que es igual a la producción. Un aumento en la demanda provoca un aumento de la producción y el correspondiente aumento de la renta, el cual provoca, a su vez, un nuevo aumento de la demanda, el cual provoca un nuevo aumento de la producción, y así sucesivamente.
+
+\subsubsection{Inversión = ahorro}
+Partiendo del ahorro privado, tenemos que
+\begin{align*}
+    S &= Y - T + T_g - C \\
+      &= Y - T + T_g - c_0 - c_1(Y-T+T_g) \\
+      &= -c_0 + (1 - c_1)(Y-T+T_g).      
+\end{align*}
+
+Como vimos en la sección del ahorro, $I = S + S_g$. Así pues, sustituyendo valores,
+\[ I = -c_0 + (1 - c_1)(Y-T+T_g) + (T-T_g - G). \]
+Si despejamos, llegamos a la misma ecuación de equilibrio:
+\[ Y = \frac{1}{1-c_1} \left[ c_0 - c_1(T-T_g) + \bar{I} + G \right]. \]
+
+Esta manera de examinar el equilibrio explica por qué la conidción de equilibrio del mercado de bienes se denomina \textbf{relación \textit{IS}}: lo que desean invertir las empresas debe ser igual a lo que desean ahorrar los individuos y el Estado.
+
+\section{El mercado financiero}
+\[   
+    \uparrow i \implies \uparrow I \implies \downarrow D \implies \downarrow \textrm{ precio de bonos }
+\]
+
+\subsection{La demanda de dinero}
+La demanda de dinero ($M^d$) depende de las transacciones y de la renta nominal. Podemos expresar la relación de la forma siguiente:
+\[ M^d = \$Y \cdot L(i), \]
+donde $L(i)$ es una función decreciente del tipo de interés, $i$. 
+
+La curva $M^d$ representa la relación entre la demanda de dinero y el tipo de interés \textit{correspondiente a un determinado nivel de renta nominal}, $\$Y$. Tiene pendiente negativa: cuanto más bajo es el tipo de interés, mayor es la demanda de dinero. Dado el tipo de interés, un aumento de la renta nominal eleva la demanda de dinero. 
+
+\begin{center}    
+\begin{tikzpicture}
+    \begin{axis}[standard,
+                xtick=\empty,
+                ytick=\empty,
+                samples=1000,
+                xlabel={$M$},
+                ylabel={$i$},
+                xmin=0,xmax=5,
+                ymin=0,ymax=5]
+    
+    \draw[dashed, black!10!gray] (0,2.5) -- (2.042,2.5);
+    \draw[dashed, black!10!gray] (0.667,2.5) -- (0.667,0) node[anchor=north] {$M$};
+    \draw[dashed, black!10!gray] (2.042,2.5) -- (2.042,0) node[anchor=north] {$M'$};
+    
+    \addplot[miAzul, name path=F,domain={0.34:4.8}, very thick]{1/(0.6*x)};
+    \node[anchor=center,label=north:{\color{miAzul}$M^d$ (para $\$Y$)}] at (axis cs:4,0.417){};
+    
+    \addplot[miMorado, name path=F,domain={1.41:4.8}, very thick]{1/(0.6*(x-1)) + 0.9};
+    \node[anchor=center,label=north:{\color{miMorado}$M^{d'}$ (para $\$Y' > \$Y$)}] at (axis cs:4.5,1.6){};
+    
+    \filldraw[black] (0.667,2.5) circle (1.5pt);
+    \filldraw[black] (2.042,2.5) circle (1.5pt);
+    
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{La oferta de dinero}
+
+Cuando el Banco Central aplica una \textbf{política contractiva}, la oferta se mueve a la izquierda y el interés subirá; cuando aplica una \textbf{política expansiva}, la oferta se mueve a la derecha y el interés baja.
+
+\begin{center}    
+    \begin{tikzpicture}
+        \begin{axis}[standard,
+                    xtick=\empty,
+                    ytick=\empty,
+                    samples=1000,
+                    xlabel={$M$},
+                    ylabel={$i$},
+                    xmin=0,xmax=5,
+                    ymin=0,ymax=5]
+        
+        \draw[dashed, black!10!gray] (2.5,1.233) -- (0,1.233) node[anchor=east] {$i$};
+
+        \draw[miMorado, very thick] (2.5,0) -- (2.5,4.9);
+        \node[anchor=center,label=east:{\color{miMorado}Oferta monetaria, $M^s$}] at (axis cs:2.5,4.8){};
+        \node[anchor=center,label=south:{\color{ black!10!gray}$M$}] at (axis cs:2.5,0){};
+
+
+        \addplot[miAzul, name path=F,domain={0.87:4.8}, very thick]{1/(0.6*(x-0.5))+0.4};
+        \node[anchor=center,label=north:{\color{miAzul}Demanda de dinero, $M^d$}] at (axis cs:5,0.876){};
+                
+        \filldraw[black] (2.5,1.233) circle (1.5pt)node[anchor=south west]{$A$};
+        
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+% Sección
+Para una oferta monetaria dada, \textit{un aumento de la renta nominal provoca una subida del tipo de interés}. 
+
+\textit{Un aumento de la oferta monetaria por parte del banco central provoca una reducción del tipo de interés}.
+
+\subsection{La política monetaria y las operaciones de mercado abierto}
+Si el banco central aumenta la oferta monetaria al comprar bonos, se dice que está haciendo una \textbf{operación de mercado abierto expansiva}. Si vende bonos, entonces está haciendo una \textbf{operación de mercado abierto contractiva} y disminuye la oferta monetaria.
+
+\subsubsection{Precios y rendimientos de bonos}
+Tenemos la siguiente ecuación:
+\[ i = \frac{P_F - P_B}{P_B} \Longrightarrow P_B = \frac{P_F}{1+i},\]
+
+en donde:
+\begin{itemize}
+    \item $i$ es el tipo de interés;
+    \item $P_B$ es el precio del bono hoy, y
+    \item $P_F$ es el pago final del bono.
+\end{itemize}
+
+Así pues, cuanto más alto es el precio del bono, más bajo es el tipo de interés. Cuanto más alto es el tipo de interés, más bajo es el precio actual.
+
+En resumen:
+\begin{itemize}
+    \item El tipo de interés se determina por la igualdad de la oferta y la demanda de dinero.
+    \item Modificando la oferta monetaria, el banco central puede influir en el tipo de interés.
+    \item El banco central altera la oferta monetaria realizando operaciones de mercado abierto (compra o venta de bonos).
+    \item Si el banco central compra bonos, se eleva la oferta monetaria (se desplaza hacia la derecha), sube el precio de los bonos y baja el interés.
+\end{itemize}
+
+\subsection{La trampa de la liquidez}
+Cuando el tipo de interés es igual a cero y una vez que los individuos tienen suficiente dinero para realiza transacciones, les da lo mismo mantener dinero que bonos. La demanda de dinero se vuelve horizontal. Eso imlica que cuando el tipo de interés es igual a cero, los nueovs aumentos de la oferta monetaria no afectan al tipo de interés, que sigue siendo cero.
+
+\section{El modelo \textit{IS}-\textit{LM}}
+\subsection{El mercado de bienes y la curva \textit{IS}}
+Primero, vemos que la inversión no es constante y depende de dos factores: de la producción, $Y$, y del tipo de interés, $i$. Un aumento de de la producción provoca un incremento de la inversión, mientras que una subida del tipo de interés provoca una reducción de la inversión.
+
+Así pues, tenemos la siguiente condición de equilibrio:
+\[ Y = C(Y-T) + I(Y,i) + G. \]
+
+De aquí deducimos que:
+\begin{itemize}
+    \item Un aumento de la producción provoca un incremento de la renta, así como un aumento de la renta disponible. El aumento de la renta disponible da lugar a un aumento del consumo.
+    \item Un aumento de la producción también provoca un aumento de la inversión.
+\end{itemize}
+
+Entonces, dada una condición de equilibrio entre la demanda (\textit{ZZ}) y la producción ($Y$), si el tipo de interés cambia, entonces cambia la inversión y, por lo tanto, cambia la producción. Si sube el tipo de interés, la producción de equilibrio es menor. La relación entre el tipo de interés y la producción es la \textbf{curva \textit{IS}}.
+
+Una subida de los impuestos desplaza la curva \textit{IS} a la izquierda, pues la renta disponible disminuye, lo que provoca una reducción del consumo, lo cual provoca, a su vez, una disminución de la demanad de bienes y una disminución de la producción de equilibrio. Cualquier cosa que aumente el nivel de equilibrio (disminuye $T$, aumenta $G$ o aumenta la confianza de los consumidores) tendrá el efecto contrario y la curva \textit{IS} se desplazará a la derecha.
+
+\subsection{Los mercados financieros y la relación \textit{LM}}
+Tenemos la siguiente condición de equilibrio:
+\[ \frac{M}{P} = Y \cdot L(i), \]
+la cual nos dice que la oferta monetaria real ---la cantidad de dinero expresada en bienes y no en pesos--- debe ser igual a la demanda de dinero real, la cual depende directamente de la renta real ($Y$) e inversamente del tipo de interés ($i$). Ésta es la \textbf{relación \textit{LM}}.
+
+Recordemos que un incremento de la renta lleva a los individuos a aumentar su demanda de dinero, cualquiera que sea el tipo de interés. Pero, como la oferta monetaria está dada, entonces el tipo de interés sube. Si nos fijamos en lo que sucede con cualquier valor de la renta, dada la cantidad de dinero, obtenemos la \textbf{curva \textit{LM}}. Se dice que esta relación implica que el aumento de la actividad económica presiona sobre los tipos de interés.
+
+Un aumento de la oferta monetaria real ($M/P$) desplaza la curva \textit{LM} hacia abajo; una reducción de la oferta monetaria la desplaza hacia arriba. La variación de $M/P$ puede deberse a variaciones de la cantidad nominal de dinero ($M$) o a variaciones del nivel de precios ($P$).
+
+\subsection{Análisis conjunto de las relaciones \textit{IS} y \textit{LM}}
+Ver tabla.
+
+\section{Economía abierta}
+
+\subsection{4.1 La apertura de los mercados de bienes}
+\subsubsection{4.1.1 Los tipos de cambio nominales}
+El \textbf{tipo de cambio nominal}es el precio de la moneda nacional expresado en moneda extranjera. Se representa por medio de $E$.
+
+\begin{itemize}
+    \item Apreciación de la moneda nacional $\iff$ aumento del precio de la moneda nacional expresado en moneda extranjera $\iff$ subida del tipo de cambio.
+    \item Depreciación de la moneda nacional $\iff$ descenso del precio de la moneda nacional extranjera $\iff$ reducción del tipo de cambio.
+\end{itemize}
+
+\subsubsection{4.1.2 De los tipos de cambio nominales a  los tipos de cambio reales}
+Sea $P$ el deflactor del PIB nacional, $P^*$ el deflactor del PIB extranjero y $E$ el tipo de cambio nominal entre la moneda nacional y la extranjera. Entonces $\varepsilon$, el \textbf{tipo de cambio real}, que representa el precio de los bienes interiores expresado en bienes extranjeros, está denotado por
+$$ \varepsilon = \frac{EP}{P^*}. $$
+
+El tipo de cambio real es un número índice; es decir, por sí solo no transmite ningna información. Sin embargo, su tasa de variación sí transmite información. Los tipos de cambio reales varían, al igual que los nominales, con el paso del tiempo.
+
+\begin{itemize}
+\item Apreciación real $\iff$ aumento del precio de los bienes interiores expresado en bienes extranjeros $\iff$ subida del tipo de cambio real.
+\item Depreciación real $\iff$ reducción del precio de los bienes interiores expresado en bienes extranjeros $\iff$ reducción del tipo de cambio real.
+\end{itemize}
+
+Puede haber una apreciación real sin una apreciación nominal y puede haber una apreciación nominal sin una apreciación real.
+
+\subsection{4.2 La apertura de los mercados financieros}
+\subsubsection{4.2.1 La balanza de pagos}
+Se compone de dos partes separadas por una línea. Las transaccoiones se denominan transacciones \textbf{por encima de la línea} o transacciones \textbf{por debajo de la línea}. Las que son por encima de la línea registran los pagos efectuados a y por el resto del mundo; se denominan transacciones por \textbf{cuenta corriente}. La suma de los pagos netos a y del resto del mundo se llama la \textbf{balanza por cuenta corriente}. Un país puede tener un déficit comercial sin déficit por cuenta corriente y viceversa. Las transacciones situadas por debajo de la línea se denominan transacciones de la \textbf{cuenta financiera}. Las cifras correspondientes a las transacciones por cuenta corriente y financieras deberían ser iguales, pero normalmente no lo son. La diferencia entre las dos se conoce como la \textbf{discrepancia estadística}.
+
+El PNB, el valor añadido por los factores de producción de los residentes en el país, se calcula como
+\[ \textit{PNB} = \textit{PIB} + \textit{NI},\]
+en donde \textit{NI} son las rentas netas.
+
+\subsubsection{4.2.2 La elección entre los activos nacionales y los extranjeros}
+La gente se enfrenta a una nueva decisión financiera: mantener activos nacionales o activos extranjeros. La única decisión que debemos considerar es la elección entre los activos nacionales que pagan intereses y los activos extranjeros que pagan intereses.
+
+Si decidimos mantener bonos nacionales, sea $i_t$ el tipo de interés nominal nacional a un año. Entonces, por cada peso que invirtamos en bonos nacionales, obtendremos $(1+i_t)$ pesos el próximo año.
+
+Si, por el contrario, decidimos mantener bonos estadounidenses, primero tenemos que comprar dólares. Sea $E_t$ el tipo de cambio nominal entre el peso y el dólar. Por cada peso, recibimos $E_t$ dólares. Sea $i_t^*$ el tipo de interés nominal a un año de los bonos estadounidenses (en dólares). el próximo año tendremos $E_t(1+i_t^*)$ dólares. 
+
+Entonces tendremos que convertir los dólares de nuevo en pesos. Si esperamos que el tipo de cambio nominal sea $E_{t+1}^e$ el próximo año, cada dólar valdrá $\frac{1}{E_{t+1}^e}$ pesos. Por tanto, cabe esperar tener $E_t(1+i_t^*)(\frac{1}{E_{t+1}^e})$ pesos el próximo año por cada peso que invirtamos ahora.
+
+Supongamos que a nosotros solamente nos interesa la \textit{tasa de rendimiento esperado}, y, por tanto, solamente queremos mantener el activo con la tasa de rendimiento esperado más alta. En este caso, para tener tanto bonos estadounidenses como mexicanos, estos deben tener la misma tasa de rendimiento esperado:
+\[ (1+i_t) = (E_t)(1+i_t^*)\left(\frac{1}{E_{t+1}^e}\right). \]
+
+Reordenando:
+\[ (1+i_t) = (1+i_t^*)\left(\frac{E_t}{E_{t+1}^e}\right).\]
+Esta ecuación se denomina la \textbf{relación de la paridad descubierta de los tipos de interés}. La forma de la condición de la paridad de los tipos de interés que debemos recordar es la siguiente:
+\[ i_t \approx i_t^* - \frac{E_{t+1}^e - E_t}{E_t}. \]
+
+Esto quiere decir que el tipo de interés nacional debe ser igual al tipo de interés extranjero menos la tasa esperada de depreciación de la moneda extranjera. Nótese que, si $E_{t+1}^e = E_t$, la condición de la paridad de los tipos de interés implica que $i_t = i_t^*$.
+
+Ver ejemplo de esto al final de la página 363.
+
+\subsection{4.3 La relación \textit{IS} en la economía abierta}
+\subsubsection{4.3.1 La demanda de bienes interiores}
+En una economía abierta, la \textbf{demanda de bienes interiores}, $Z$, es:
+\[ Z = C + I + G - \frac{IM}{\varepsilon}+X. \]
+
+Aquí, $C, I$ y $G$ constituyen la \textbf{demanda nacional de bienes}, sean interiores o exteriores; $\frac{IM}{\varepsilon}$ es el valor de las importaciones expresado en bienes interiores.
+
+\subsubsection{4.3.2 Los determinantes de \textit{C}, \textit{I} y \textit{G}}
+Lo que decidan gastar los consumidores sigue dependiendo de su renta y de su riqueza. Aunque el tipo de cambio real afecta sin duda a la \textit{composición} del gasto de consumo en bienes interiores y extranjeros, no tiene por qué cambiar el \textit{nivel} total de consumo. Lo mismo ocurre con la inversión. 
+
+Así pues, la demanda nacional es la misma que vimos en la relación \textit{IS}:
+\[ C+I+G = C(Y-T) + I(Y,r) + G, \]
+en donde
+\begin{itemize}
+    \item $C$ depende positivamente de la renta disponible, $Y-T$;
+    \item $I$ depende positivamente de la producción, $Y$, y negativamente del tipo de interés oficial real, $r$.
+\end{itemize}
+
+\subsubsection{4.3.4 Los determinantes de las importaciones}
+Un aumento de la renta interior significa un aumento de la demanda nacional de todos los bienes, tanto interiores como extranjeros. Por tanto, un aumento de la renta interior conlleva un aumento de las importaciones. También dependen del tipo de cambio real: cuanto más caros son los bienes interiores en relación con los bienes extranjeros —o lo que es lo mismo, cuanto más baratos son los bienes extranjeros en relación con los bienes interiores—, mayor es la demanda nacional de bienes extranjeros. Por tanto, un asubida del tipo de cambio real provoca un aumento de las importaciones.
+
+\[ IM = IM(Y, \varepsilon),\]
+en donde $IM$ depende positivamente de tanto $Y$ como de $\varepsilon$.
+
+\subsubsection{4.3.5 Los determinantes de las exportaciones}
+Las exportaciones depende de la renta etranjera: un aumento de la renta extranjera significa un aumento de la demanda extranjera de todos los bienes, tanto extranjeros como interiores. Por tanto, un aumento de la renta extranjera con lleva un aumento de las exportaciones. También dependen del tipo de cambio real: cuanto más alto es el precio de los bienes interiores expresado en bienes extranjeros, menor es la demanda extranjera de bienes interiores.
+
+\[ X = X(Y^*, \varepsilon), \]
+en donde $X$ depende positivamente de $Y^*$, pero negativamente de $\varepsilon$.
+
+\vfill\null
+\columnbreak
+\subsubsection{4.3.6 La unión de todos los componentes}
+Para hallar la demanda de bienes interiores, primero debemos \textit{restar las importaciones}; así obtenemos la recta $AA$ (demanda nacional de bienes interiores). La distancia entre $DD$ y $AA$ es igual al valor de las importaciones, $\frac{IM}{\varepsilon}$. Dado que las importaciones aumentan con la renta, la distancia entre las dos rectas aumenta con la renta. $AA$ es más plana que $DD$: cuando aumenta la renta, parte de la demanda naciona adicional recae sobre bienes extranjeros y no sobre bienes interiores; la demanda nacional de bienes interiores aumenta menos que la demanda nacional total. También debemos \textit{sumar las exportaciones}; así obtenemos la recta $ZZ$, que se encuentra por encima de la $AA$. La distancia entre $ZZ$ y $AA$ es igual a las exportaciones, $X$. Como ninguna de las dos depende de la renta, las rectas son paralelas.
+
+\begin{center}
+\begin{tikzpicture}
+
+    %\draw[step=1cm,gray,very thin] (-0.9,-7.9) grid (5.9,5.9);
+    
+    \draw[-Stealth] (0,0) -- (5,0) node[anchor=north west] {$Y$};
+    \draw[-Stealth] (0,0) -- (0,5) node[anchor=south east] {$Z$};
+
+    \path[miMorado] (4,4) -- node[] (text) {$\frac{IM}{\varepsilon}$} (4,2);
+    \draw[-{Triangle[width=8pt,length=4pt]}, line width=4pt, miMorado] (4,4)--(text)--(4,2);
+    
+    \path[miAzul] (3,1.6) -- node[] (text2) {$X$} (3,2.9);
+    \draw[-{Triangle[width=8pt,length=4pt]}, line width=3pt, miAzul] (3,1.6)--(text2)--(3,2.9);
+    
+    \draw[very thick, miAzul] (0,2) -- (4.5,3.5) node[anchor=west] {$ZZ$};
+    \draw[very thick, miMorado] (0,0.5) -- (4.5,2) node[anchor=west] {$AA$};
+    \draw[very thick, miRojo] (0,1) -- (4.5,4.5) node[anchor=west] {$DD$};
+    
+    \draw[dashed, black!10!gray] (2.25,2.75) -- (2.25,0) node[anchor=north] {$Y_{TB}$};
+    \filldraw[black] (2.25,2.75) circle (2pt);
+    
+    \draw[dashed, black!10!gray] (1,2.3333) -- (1,0) node[anchor=north] {$Y_0$};
+    \filldraw[black] (1,2.3333) circle (2pt)node[anchor=south]{$C$};
+    \filldraw[black] (1,1.7777) circle (2pt)node[anchor=west]{$B$};
+    \filldraw[black] (1,0.8333) circle (2pt)node[anchor=north west]{$A$};
+    
+    % Segunda gráfica
+    
+    % áreas
+    \fill[gray!30!] (0,-3) -- (0,-2) -- (2.25,-3) -- cycle;
+    \fill[orange!30!] (2.25,-3) -- (4.5,-4) -- (4.5,-3) -- cycle;
+    
+    \draw[-Stealth] (0,-3) -- (5,-3) node[anchor=north west] {$Y$};
+    \draw[-Stealth] (0,-4.3) -- (0,-1) node[anchor=south east] {$NX$};
+    
+    \draw[very thick, miMorado] (0,-2) -- (4.5,-4) node[anchor=west] {$NX$};
+    \draw[dashed, black!10!gray] (2.25,-0.6) -- (2.25,-3);
+    \filldraw[black] (2.25,-3) circle (2pt)node[anchor=north]{$Y_{TB}$};
+    \draw[dashed, black!10!gray] (1,-0.6) -- (1,-3);
+    
+    \draw [decorate, 
+        decoration = {calligraphic brace,raise=3pt}] (1,-3) --  (1,-2.445)node[pos=0.5,left=6pt,black]{$BC$};
+    
+    \draw[orange!80!] (3.5,-3.5) -- (3,-3.8)node[anchor=east]{Déficit comercial};
+    \draw[black!10!gray] (1.25,-2.85) -- (2.5,-1.5)node[anchor=west]{Superávit comercial};
+    
+\end{tikzpicture}
+\end{center}
+
+\subsection{4.4 La producción de equilibrio y la balanza comercial}
+El mercado de bienes se encuentra en equilibrio cuando la producción de bienes interiores es igual a la demanda —tanto nacional como extranjera— de bienes interiores:
+$$ Y = C(Y-T) + I(Y,r) + G - \frac{IM(Y,\varepsilon)}{\varepsilon} + X(Y^*, \varepsilon).$$
+
+Gráfica p. 374
+
+\subsection{4.5 Un aumento de la demanda (nacional o extranjera)}
+\subsubsection{4.5.1 Un aumenento de la demanda nacional}
+\begin{itemize}
+    \item Para aumentar la demanda nacional, el gobierno decide aumentar $G$.
+    \item Partiendo de una situación de equilibrio de la balanza comercial, un aumento del gasto público provoca un déficit comercial.
+    \item Un aumento del gasto público desplaza a $ZZ$ hacia arriba, por lo que aumenta la producción. Pero el multiplicador es \textbf{menor} que en una economía cerrada.
+    \item El menor multiplicador y el déficit comercial tienen la misma causa: parte de la demanda nacional recae en bienes extranjeros.
+    \item Un aumento de la demanda nacional provoca un incremento de la producción de bienes interiores, pero también empeora la balanza comercial.
+\end{itemize}
+
+Gráfica p. 375
+
+\subsubsection{4.5.2 Un aumento de la demanda extranjera}
+\begin{itemize}    
+    \item Estamos hablando de un aumento de $Y^*$.
+    \item $Y^*$ afecta directamente a las exportaciones, por lo que aparece en la relación entre la demanda de bienes interiores y la producción. Una umento de $Y^*$ desplaza la recta $ZZ$ hacia arriba, pero no desplaza a la recta $DD$ porque no afecta directamente al consumo, la inversión o el gasto público nacionales. 
+    \item Un aumento de la producción extranjera eleva la producción de bienes interiores y  mejora la balanza comercial.
+    \item Un aumento de la demanda extranjera provoca un incremento de la producción de bienes interiores y una mejora de la balanza comercial.
+\end{itemize}
+
+Así pues, las consecuencias en los cambios de las demandas nos llevan a concluir que las perturbaciones que sufre la demanda en un país afectan a todos los demás. Cuanto más estrechos son los vínculos comerciales, mayores son las interacciones y más se mueven al unísono los países.
+
+\subsection{4.6 La depreciación, la balanza comercial y la producción}
+
+
+\vfill
+\begin{flushright}
+    \rule{0.65\linewidth}{0.1pt} \\
+    José Alberto Márquez Luján
+\end{flushright}
+
+\end{multicols*}
+
+\end{document}
