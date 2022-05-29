@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1653784332 "d:/OneDrive/Documentos/ITAM/Sexto semestre/Eco2/Apuntes/eco2.tex" "eco2.pdf" "eco2" 1653784343
+["pdflatex"] 1653800307 "d:/OneDrive/Documentos/ITAM/Sexto semestre/Eco2/Apuntes/eco2.tex" "eco2.pdf" "eco2" 1653800316
   "C:/Users/betom/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm0800.pk" 1638930674 9292 9d32da3ee06b7f44a6669ffc95958bff ""
   "C:/Users/betom/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1638206166 9759316 b7a3b66a6de912e0df5167d8ae62dd7a ""
   "C:/Users/betom/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1653687871 81107 70b8516c68c2e617189c5e44bfd16b96 ""
@@ -290,10 +290,10 @@
   "D:/Program Files/MiKTeX/tex/latex/tools/multicol.sty" 1636713860 32262 2bb622a0aa56c4a7a5cbdfe9d122c15a ""
   "D:/Program Files/MiKTeX/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "D:/Program Files/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636288472 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "d:/OneDrive/Documentos/ITAM/Sexto semestre/Eco2/Apuntes/eco2.tex" 1653784330 39735 12f04f9029983d94ba7d079f249b06d7 ""
-  "eco2.aux" 1653784343 7565 bc077495ce488ba63177172fe1d783c0 "pdflatex"
-  "eco2.out" 1653784343 11216 f9e9fd0978dadf412faf269fca794c06 "pdflatex"
-  "eco2.tex" 1653784330 39735 12f04f9029983d94ba7d079f249b06d7 ""
+  "d:/OneDrive/Documentos/ITAM/Sexto semestre/Eco2/Apuntes/eco2.tex" 1653800305 48663 c662ef5b334bddf22925bcffd7d7ac85 ""
+  "eco2.aux" 1653800316 8955 450d9ba5ff6df39c7fa62a9b95e34bb2 "pdflatex"
+  "eco2.out" 1653800316 13318 6e6bc902ba793873b6993179c47d0dad "pdflatex"
+  "eco2.tex" 1653800305 48663 c662ef5b334bddf22925bcffd7d7ac85 ""
   (generated)
   "eco2.aux"
   "eco2.log"
