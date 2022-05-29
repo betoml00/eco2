@@ -1,9 +1,9 @@
-\documentclass[10pt, landscape]{article}
+\documentclass[10pt]{article}
 \usepackage[spanish, es-noshorthands]{babel}
 \decimalpoint
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
 \usepackage{multicol,multirow}
-\usepackage[margin=1cm, top=1cm, landscape]{geometry}
+\usepackage[margin=1cm, top=1cm]{geometry}
 \usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
@@ -31,6 +31,7 @@
 \usepackage{xcolor}
 
 \definecolor{miAzul}{RGB}{13, 33, 161}
+\definecolor{miAzul2}{RGB}{77, 89, 161}
 \definecolor{miMorado}{RGB}{88, 43, 67}
 \definecolor{miRojo}{RGB}{186, 24, 27}
 
@@ -75,7 +76,7 @@
 \begin{center}
      \Large{\textbf{Economía II}} \\
 \end{center}
-\begin{multicols*}{3}
+\begin{multicols*}{2}
 \setlength{\premulticols}{1pt}
 \setlength{\postmulticols}{1pt}
 \setlength{\multicolsep}{1pt}
@@ -164,6 +165,7 @@ La \textbf{tasa de desempleo} ($u$) es
 
 Podemos visualizar a la división de la población en el siguiente diagrama:
 
+\begin{center}
 \begin{tikzpicture}
     [
         level 1/.style = {sibling distance = 2.75cm, level distance = 0.8cm},
@@ -196,6 +198,7 @@ Podemos visualizar a la división de la población en el siguiente diagrama:
             }
         };
 \end{tikzpicture}
+\end{center}
 
 \subsection{La tasa de inflación}
 La \textbf{tasa de inflación} es la tasa a la que sube el nivel de precios. Para definir al nivel de precios, existen dos \textit{índices de precios}: el deflactor del PIB y el Índice de Precios de Consumo.
@@ -304,9 +307,6 @@ Si despejamos, llegamos a la misma ecuación de equilibrio:
 Esta manera de examinar el equilibrio explica por qué la conidción de equilibrio del mercado de bienes se denomina \textbf{relación \textit{IS}}: lo que desean invertir las empresas debe ser igual a lo que desean ahorrar los individuos y el Estado.
 
 \section{El mercado financiero}
-\[   
-    \uparrow i \implies \uparrow I \implies \downarrow D \implies \downarrow \textrm{ precio de bonos }
-\]
 
 \subsection{La demanda de dinero}
 La demanda de dinero ($M^d$) depende de las transacciones y de la renta nominal. Podemos expresar la relación de la forma siguiente:
@@ -432,8 +432,62 @@ Recordemos que un incremento de la renta lleva a los individuos a aumentar su de
 
 Un aumento de la oferta monetaria real ($M/P$) desplaza la curva \textit{LM} hacia abajo; una reducción de la oferta monetaria la desplaza hacia arriba. La variación de $M/P$ puede deberse a variaciones de la cantidad nominal de dinero ($M$) o a variaciones del nivel de precios ($P$).
 
-\subsection{Análisis conjunto de las relaciones \textit{IS} y \textit{LM}}
-Ver tabla.
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[standard,
+            xtick=\empty,
+            ytick=\empty,
+            samples=1000,
+            xlabel={$Y$},
+            ylabel={$i$},
+            xmin=0,xmax=5,
+            ymin=0,ymax=5]
+
+\draw[dashed, black!10!gray] (2.5,3.049) -- (0,3.049) node[anchor=east] {$i$};
+\draw[dashed, black!10!gray] (2.5,1.349) -- (0,1.349) node[anchor=east] {$i'$};
+\draw[dashed, black!10!gray] (2.5,3.049) -- (2.5,0) node[anchor=north] {$Y$};
+
+\addplot[miAzul2, name path=G,domain={0.6:4.2}, very thick]{0.08*(x+1.9)^2-0.2};
+\node[anchor=center,label=east:{\color{miAzul2}$LM'$ ($\frac{M'}{P} >\frac{M}{P}$)}] at (axis cs:4.2,2.777){};
+
+\addplot[miAzul, name path=F,domain={0.6:4.2}, very thick]{0.08*(x+1.9)^2+1.5};
+\node[anchor=center,label=east:{\color{miAzul}$LM$ ($\frac{M}{P}$)}] at (axis cs:4.2,4.477){};
+
+\draw[-{Triangle[width=8pt,length=4pt]}, line width=3pt, miAzul2] (3.4,3.2)--(3.4,2.6);
+        
+\filldraw[black] (2.5,3.049) circle (1.5pt);
+\filldraw[black] (2.5,1.349) circle (1.5pt);
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Análisis conjunto de las relaciones \textit{IS} y \textit{LM}}  
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[standard,
+            xtick=\empty,
+            ytick=\empty,
+            samples=1000,
+            xlabel={$Y$},
+            ylabel={$i$},
+            xmin=0,xmax=5,
+            ymin=0,ymax=5]
+
+\draw[dashed, black!10!gray] (2.5,1.923) -- (0,1.923) node[anchor=east] {$i$};
+\draw[dashed, black!10!gray] (2.5,1.923) -- (2.5,0) node[anchor=north] {$Y$};
+
+\addplot[miRojo, name path=G,domain={0.8:4.2}, very thick]{0.12*(x-6.9)^2-0.4};
+\node[anchor=center,label=east:{\color{miRojo}$IS$}] at (axis cs:4.2,0.475){};
+
+\addplot[miAzul, name path=F,domain={0.8:4.2}, very thick]{0.12*(x+1.9)^2-0.4};
+\node[anchor=center,label=east:{\color{miAzul}$LM$}] at (axis cs:4.2,4){};
+        
+\filldraw[black] (2.5,1.923) circle (1.5pt)node[anchor=west, xshift=2pt]{$A$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
 \section{Economía abierta}
 
@@ -518,8 +572,8 @@ Las exportaciones depende de la renta etranjera: un aumento de la renta extranje
 \[ X = X(Y^*, \varepsilon), \]
 en donde $X$ depende positivamente de $Y^*$, pero negativamente de $\varepsilon$.
 
-\vfill\null
-\columnbreak
+%\vfill\null
+%\columnbreak
 \subsubsection{4.3.6 La unión de todos los componentes}
 Para hallar la demanda de bienes interiores, primero debemos \textit{restar las importaciones}; así obtenemos la recta $AA$ (demanda nacional de bienes interiores). La distancia entre $DD$ y $AA$ es igual al valor de las importaciones, $\frac{IM}{\varepsilon}$. Dado que las importaciones aumentan con la renta, la distancia entre las dos rectas aumenta con la renta. $AA$ es más plana que $DD$: cuando aumenta la renta, parte de la demanda naciona adicional recae sobre bienes extranjeros y no sobre bienes interiores; la demanda nacional de bienes interiores aumenta menos que la demanda nacional total. También debemos \textit{sumar las exportaciones}; así obtenemos la recta $ZZ$, que se encuentra por encima de la $AA$. La distancia entre $ZZ$ y $AA$ es igual a las exportaciones, $X$. Como ninguna de las dos depende de la renta, las rectas son paralelas.
 
@@ -601,6 +655,19 @@ Gráfica p. 375
 Así pues, las consecuencias en los cambios de las demandas nos llevan a concluir que las perturbaciones que sufre la demanda en un país afectan a todos los demás. Cuanto más estrechos son los vínculos comerciales, mayores son las interacciones y más se mueven al unísono los países.
 
 \subsection{4.6 La depreciación, la balanza comercial y la producción}
+Una depreciación (también puede ser un aumento en la producción extranjera) provoca un aumento en las exportaciones netas; esto es, provoca un desplazamiento de la demanda, tanto extranjera como nacional, en favor de los bienes interiores, lo cual provoca, a su vez, tanto un aumento de la producción de bienes interiores como una mejora de la balanza comercial. La única diferencia entre una depreciación y un aumento en la producción extranjera es que la depreciación empeora el bienestar de los individuos, ya que tienen que pagar más por los bienes extranjeros.
+
+En la medida en que al gobierno le preocupe \textit{tanto} el nivel de producción \textit{como} la balanza comercial, tiene que utilizar \textit{tanto} la política fiscal \textit{como} la política de tipo de cambio.
+
+\subsection{La curva J}
+En los primeros meses posteriores a la la depreciación, es probable que sus efectos se reflejen mucho más en los precios que en las cantidades. El precio de las importaciones sube y el de las exportaciones baja. Pero el volumen de importaciones y exportaciones se ajusta lentamente.
+
+\begin{itemize}
+    \item Inicialmente: $X, \textit{IM}$ no varían, $\varepsilon$ cae $\implies (X - \textit{IM}/\varepsilon)$ cae.
+    \item A la larga: $X$ aumenta, \textit{IM}, $\varepsilon$ caen $\implies (X - \textit{IM}/\varepsilon)$ aumenta.
+\end{itemize}
+
+\subsection{El ahorro, la inversión y la balanza por cuenta corriente}
 
 
 \vfill
